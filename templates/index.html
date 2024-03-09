@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+    margin: 10px 0;
+}
+
+h3 {
+    color: #555;
+    margin: 10px 0;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #0056b3;
+}
+        </style>
+    </head>
+</html>
+<h1>Insurance Premium Prediction  </h1>
+<h1>Project </h>
+<h3>click on the form :</h3>
+    <br>
+    <a href="/predict" >Form</a>
+    <a id="run-pipeline-btn" href="#">Run pipeline</a> <!-- Remove href to prevent navigation -->
+<script>
+    document.getElementById("run-pipeline-btn").addEventListener("click", function() {
+        // Change button text to "Loading..."
+        this.textContent = "Loading...";
+
+        // Make a request to the server to run the pipeline
+        fetch('/runpipeline')
+            .then(response => {
+                if (response.ok) {
+                    // If the pipeline was executed successfully, change button text back to "Run pipeline"
+                    document.getElementById("run-pipeline-btn").textContent = "Run pipeline";
+                } else {
+                    console.error('Failed to run pipeline');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
